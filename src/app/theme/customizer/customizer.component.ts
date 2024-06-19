@@ -1,12 +1,5 @@
 import { CdkDrag, CdkDragStart } from '@angular/cdk/drag-drop';
-import {
-  Component,
-  EventEmitter,
-  Output,
-  TemplateRef,
-  ViewEncapsulation,
-  inject,
-} from '@angular/core';
+import { Component, EventEmitter, inject, Output, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -50,6 +43,8 @@ export class CustomizerComponent {
   form = this.fb.nonNullable.group<AppSettings>(this.settings.options);
 
   private formSubscription = Subscription.EMPTY;
+  private dragging = false;
+  private drawerRef?: MtxDrawerRef;
 
   get isHeaderPosAbove() {
     return this.form.get('headerPos')?.value === 'above';
@@ -62,10 +57,6 @@ export class CustomizerComponent {
   get isShowHeader() {
     return this.form.get('showHeader')?.value === true;
   }
-
-  private dragging = false;
-
-  private drawerRef?: MtxDrawerRef;
 
   onDragStart(event: CdkDragStart) {
     this.dragging = true;

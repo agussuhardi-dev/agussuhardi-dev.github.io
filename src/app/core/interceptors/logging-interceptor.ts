@@ -1,5 +1,5 @@
 import { HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { finalize, tap } from 'rxjs';
 
 import { MessageService } from '@shared';
@@ -25,7 +25,7 @@ export class LoggingInterceptor implements HttpInterceptor {
         const elapsed = Date.now() - started;
         const msg = `${req.method} "${req.urlWithParams}" ${ok} in ${elapsed} ms.`;
         this.messenger.add(msg);
-      })
+      }),
     );
   }
 }

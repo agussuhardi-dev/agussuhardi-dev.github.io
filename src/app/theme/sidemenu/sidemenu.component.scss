@@ -12,7 +12,7 @@
     height: auto;
     padding: 0;
 
-    >.menu-heading {
+    > .menu-heading {
       &:hover,
       &:focus {
         background-color: var(--sidemenu-heading-hover-background-color);
@@ -34,7 +34,7 @@
     &.expanded {
       background-color: var(--sidemenu-expanded-background-color);
 
-      >.menu-toggle>.menu-caret {
+      > .menu-toggle > .menu-caret {
         transform: rotate(-180deg);
       }
     }
@@ -99,7 +99,7 @@
     border-radius: 50rem;
   }
 
-  &.level-1>li>.menu-heading {
+  &.level-1 > li > .menu-heading {
     padding-left: 3.125rem;
 
     [dir='rtl'] & {
@@ -108,7 +108,7 @@
     }
   }
 
-  &.level-2>li>.menu-heading {
+  &.level-2 > li > .menu-heading {
     padding-left: 4rem;
 
     [dir='rtl'] & {
@@ -117,7 +117,7 @@
     }
   }
 
-  &.level-2 [class^='level-']>li>.menu-heading {
+  &.level-2 [class^='level-'] > li > .menu-heading {
     padding-left: 5rem;
 
     [dir='rtl'] & {

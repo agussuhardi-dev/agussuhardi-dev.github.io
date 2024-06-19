@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
@@ -6,9 +6,8 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
   providedIn: 'root',
 })
 export class PaginatorI18nService {
-  private readonly translate = inject(TranslateService);
-
   paginatorIntl = new MatPaginatorIntl();
+  private readonly translate = inject(TranslateService);
 
   constructor() {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => this.getPaginatorIntl());

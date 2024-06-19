@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, throwError } from 'rxjs';
@@ -18,6 +18,12 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   private readonly errorPages = [STATUS.FORBIDDEN, STATUS.NOT_FOUND, STATUS.INTERNAL_SERVER_ERROR];
 
+  intercept(request: HttpRequest<unknown>, next: HttpHandler) {
+    return next
+      .handle(request)
+      .pipe(catchError((error: HttpErrorResponse) => this.handleError(error)));
+  }
+
   private getMessage = (error: HttpErrorResponse) => {
     if (error.error?.message) {
       return error.error.message;
@@ -29,12 +35,6 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     return `${error.status} ${error.statusText}`;
   };
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler) {
-    return next
-      .handle(request)
-      .pipe(catchError((error: HttpErrorResponse) => this.handleError(error)));
-  }
 
   private handleError(error: HttpErrorResponse) {
     if (this.errorPages.includes(error.status)) {

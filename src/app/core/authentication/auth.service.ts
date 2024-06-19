@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, iif, map, merge, of, share, switchMap, tap } from 'rxjs';
 import { filterObject, isEmptyObject } from './helpers';
 import { User } from './interface';
@@ -15,10 +15,10 @@ export class AuthService {
   private user$ = new BehaviorSubject<User>({});
   private change$ = merge(
     this.tokenService.change(),
-    this.tokenService.refresh().pipe(switchMap(() => this.refresh()))
+    this.tokenService.refresh().pipe(switchMap(() => this.refresh())),
   ).pipe(
     switchMap(() => this.assignUser()),
-    share()
+    share(),
   );
 
   init() {
@@ -36,7 +36,7 @@ export class AuthService {
   login(username: string, password: string, rememberMe = false) {
     return this.loginService.login(username, password, rememberMe).pipe(
       tap(token => this.tokenService.set(token)),
-      map(() => this.check())
+      map(() => this.check()),
     );
   }
 
@@ -46,14 +46,14 @@ export class AuthService {
       .pipe(
         catchError(() => of(undefined)),
         tap(token => this.tokenService.set(token)),
-        map(() => this.check())
+        map(() => this.check()),
       );
   }
 
   logout() {
     return this.loginService.logout().pipe(
       tap(() => this.tokenService.clear()),
-      map(() => !this.check())
+      map(() => !this.check()),
     );
   }
 

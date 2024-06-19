@@ -8,4 +8,5 @@ import { MatTabsModule } from '@angular/material/tabs';
   standalone: true,
   imports: [MatTabsModule],
 })
-export class SidebarNoticeComponent {}
+export class SidebarNoticeComponent {
+}

@@ -15,7 +15,8 @@ describe('TokenInterceptor', () => {
   let http: HttpClient;
   let router: Router;
   let tokenService: TokenService;
-  const emptyFn = () => {};
+  const emptyFn = () => {
+  };
   const baseUrl = 'https://foo.bar';
   const user: User = { id: 1, email: 'foo@bar.com' };
 

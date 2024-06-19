@@ -15,7 +15,7 @@ import { NgProgressHttpModule } from 'ngx-progressbar/http';
 import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { ToastrModule } from 'ngx-toastr';
 
-import { BASE_URL, appInitializerProviders, httpInterceptorProviders } from '@core';
+import { appInitializerProviders, BASE_URL, httpInterceptorProviders } from '@core';
 import { environment } from '@env/environment';
 import { PaginatorI18nService } from '@shared';
 import { routes } from './app.routes';
@@ -36,7 +36,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(
       routes,
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }),
-      withComponentInputBinding()
+      withComponentInputBinding(),
     ),
     importProvidersFrom(
       NgProgressHttpModule,
@@ -50,7 +50,7 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient],
         },
       }),
-      FormlyConfigModule.forRoot()
+      FormlyConfigModule.forRoot(),
     ),
     { provide: BASE_URL, useValue: environment.baseUrl },
     // ==================================================

@@ -20,4 +20,5 @@ import { Component } from '@angular/core';
   `,
   standalone: true,
 })
-export class BrandingComponent {}
+export class BrandingComponent {
+}

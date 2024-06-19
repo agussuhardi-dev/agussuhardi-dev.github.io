@@ -33,7 +33,7 @@ export class TranslateComponent {
 
   constructor(
     private translate: TranslateService,
-    private settings: SettingsService
+    private settings: SettingsService,
   ) {
     translate.addLangs(['en-US', 'zh-CN', 'zh-TW']);
   }

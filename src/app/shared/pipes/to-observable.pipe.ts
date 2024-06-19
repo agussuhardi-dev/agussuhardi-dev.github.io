@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Observable, of, isObservable } from 'rxjs';
+import { isObservable, Observable, of } from 'rxjs';
 
 @Pipe({
   name: 'toObservable',

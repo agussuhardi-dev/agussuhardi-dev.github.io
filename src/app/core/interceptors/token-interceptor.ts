@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from '@core/authentication';
 import { catchError, tap, throwError } from 'rxjs';
@@ -10,8 +10,6 @@ export class TokenInterceptor implements HttpInterceptor {
   private readonly router = inject(Router);
   private readonly tokenService = inject(TokenService);
   private readonly baseUrl = inject(BASE_URL, { optional: true });
-
-  private hasHttpScheme = (url: string) => new RegExp('^http(s)?://', 'i').test(url);
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler) {
     const handler = () => {
@@ -30,7 +28,7 @@ export class TokenInterceptor implements HttpInterceptor {
           request.clone({
             headers: request.headers.append('Authorization', this.tokenService.getBearerToken()),
             withCredentials: true,
-          })
+          }),
         )
         .pipe(
           catchError((error: HttpErrorResponse) => {
@@ -39,12 +37,14 @@ export class TokenInterceptor implements HttpInterceptor {
             }
             return throwError(() => error);
           }),
-          tap(() => handler())
+          tap(() => handler()),
         );
     }
 
     return next.handle(request).pipe(tap(() => handler()));
   }
+
+  private hasHttpScheme = (url: string) => new RegExp('^http(s)?://', 'i').test(url);
 
   private shouldAppendToken(url: string) {
     return !this.hasHttpScheme(url) || this.includeBaseUrl(url);

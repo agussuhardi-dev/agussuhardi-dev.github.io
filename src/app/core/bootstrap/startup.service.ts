@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { AuthService, User } from '@core/authentication';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 import { switchMap, tap } from 'rxjs';
@@ -29,7 +29,7 @@ export class StartupService {
         .pipe(
           tap(user => this.setPermissions(user)),
           switchMap(() => this.authService.menu()),
-          tap(menu => this.setMenu(menu))
+          tap(menu => this.setMenu(menu)),
         )
         .subscribe({
           next: () => resolve(),

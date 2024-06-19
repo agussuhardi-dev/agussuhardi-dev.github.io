@@ -1,12 +1,4 @@
-import {
-  Component,
-  HostBinding,
-  Input,
-  OnInit,
-  ViewEncapsulation,
-  booleanAttribute,
-  inject,
-} from '@angular/core';
+import { booleanAttribute, Component, HostBinding, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -22,15 +14,13 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
   imports: [BreadcrumbComponent, TranslateModule],
 })
 export class PageHeaderComponent implements OnInit {
-  private readonly router = inject(Router);
-  private readonly menu = inject(MenuService);
-
   @HostBinding('class') class = 'matero-page-header';
-
   @Input() title = '';
   @Input() subtitle = '';
   @Input() nav: string[] = [];
   @Input({ transform: booleanAttribute }) hideBreadcrumb = false;
+  private readonly router = inject(Router);
+  private readonly menu = inject(MenuService);
 
   ngOnInit() {
     this.nav = Array.isArray(this.nav) ? this.nav : [];

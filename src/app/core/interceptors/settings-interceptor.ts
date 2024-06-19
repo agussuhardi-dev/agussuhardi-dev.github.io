@@ -1,5 +1,5 @@
 import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
 import { SettingsService } from '@core';
 
@@ -11,7 +11,7 @@ export class SettingsInterceptor implements HttpInterceptor {
     return next.handle(
       request.clone({
         headers: request.headers.append('Accept-Language', this.settings.options.language),
-      })
+      }),
     );
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, inject } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { PreloaderService, SettingsService } from '@core';
 import { RouterOutlet } from '@angular/router';
 

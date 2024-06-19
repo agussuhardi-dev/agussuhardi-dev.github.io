@@ -1,5 +1,5 @@
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { Component, HostBinding, OnDestroy, ViewEncapsulation, inject } from '@angular/core';
+import { Component, HostBinding, inject, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -7,7 +7,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { Subscription, filter } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
 
 import { Menu, MenuService } from '@core';
 import { TopmenuPanelComponent } from './topmenu-panel.component';
@@ -39,17 +39,12 @@ export interface TopmenuState {
 })
 export class TopmenuComponent implements OnDestroy {
   @HostBinding('class') class = 'matero-topmenu';
-
-  private readonly menu = inject(MenuService);
-  private readonly router = inject(Router);
-
-  menu$ = this.menu.getAll();
-
-  buildRoute = this.menu.buildRoute;
-
   menuList: Menu[] = [];
   menuStates: TopmenuState[] = [];
-
+  private readonly menu = inject(MenuService);
+  menu$ = this.menu.getAll();
+  buildRoute = this.menu.buildRoute;
+  private readonly router = inject(Router);
   private menuSubscription = Subscription.EMPTY;
   private routerSubscription = Subscription.EMPTY;
 

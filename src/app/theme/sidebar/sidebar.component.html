@@ -3,8 +3,8 @@
     <app-branding></app-branding>
     @if (showToggle) {
       <mat-slide-toggle hideIcon
-        [checked]="toggleChecked"
-        (change)="toggleCollapsed.emit()">
+                        [checked]="toggleChecked"
+                        (change)="toggleCollapsed.emit()">
       </mat-slide-toggle>
     }
   </div>

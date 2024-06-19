@@ -1,18 +1,19 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { Router } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
-import { TokenService, AuthService, authGuard } from '@core/authentication';
+import { authGuard, AuthService, TokenService } from '@core/authentication';
 
 @Component({
   template: '',
   standalone: true,
   imports: [HttpClientTestingModule],
 })
-class DummyComponent {}
+class DummyComponent {
+}
 
 describe('authGuard function unit test', () => {
   const route: any = {};

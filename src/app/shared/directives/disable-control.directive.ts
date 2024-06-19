@@ -1,4 +1,4 @@
-import { Directive, Input, OnChanges, inject } from '@angular/core';
+import { Directive, inject, Input, OnChanges } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
@@ -6,9 +6,8 @@ import { NgControl } from '@angular/forms';
   standalone: true,
 })
 export class DisableControlDirective implements OnChanges {
-  private readonly ngControl = inject(NgControl, { optional: true });
-
   @Input() disableControl = false;
+  private readonly ngControl = inject(NgControl, { optional: true });
 
   ngOnChanges(): void {
     if (this.disableControl) {

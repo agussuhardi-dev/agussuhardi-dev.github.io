@@ -48,7 +48,7 @@ export function timeLeft(expiredAt: number): number {
 
 export function filterObject<T extends Record<string, unknown>>(obj: T) {
   return Object.fromEntries(
-    Object.entries(obj).filter(([, value]) => value !== undefined && value !== null)
+    Object.entries(obj).filter(([, value]) => value !== undefined && value !== null),
   );
 }
 

@@ -4,14 +4,14 @@
 
 2. Replace the APIs at `login.service` with your owns.
 
-   - `/auth/login` Login
-   - `/auth/refresh` Refresh
-   - `/auth/logout` Logout
-   - `/me` Get user information
-   - `/me/menu` Get user menu
+  - `/auth/login` Login
+  - `/auth/refresh` Refresh
+  - `/auth/logout` Logout
+  - `/me` Get user information
+  - `/me/menu` Get user menu
 
 3. If you have modified the login url (defaults to `auth/login`), you should correct it in the following files.
 
-   - `auth.guard.ts`
-   - `error-interceptor.ts`
-   - `token-interceptor.ts`
+  - `auth.guard.ts`
+  - `error-interceptor.ts`
+  - `token-interceptor.ts`

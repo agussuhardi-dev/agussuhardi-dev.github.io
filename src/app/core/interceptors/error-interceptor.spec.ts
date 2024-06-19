@@ -12,7 +12,8 @@ describe('ErrorInterceptor', () => {
   let http: HttpClient;
   let router: Router;
   let toast: ToastrService;
-  const emptyFn = () => {};
+  const emptyFn = () => {
+  };
 
   function assertStatus(status: number, statusText: string) {
     spyOn(router, 'navigateByUrl');

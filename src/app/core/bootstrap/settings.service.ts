@@ -1,6 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { DOCUMENT } from '@angular/common';
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { AppDirectionality, LocalStorageService } from '@shared';
@@ -10,30 +10,25 @@ import { AppSettings, AppTheme, defaults } from '../settings';
   providedIn: 'root',
 })
 export class SettingsService {
+  options: AppSettings;
+  themeColor: Exclude<AppTheme, 'auto'> = 'light';
   private readonly key = 'ng-matero-settings';
-
   private readonly store = inject(LocalStorageService);
   private readonly mediaMatcher = inject(MediaMatcher);
   private readonly document = inject(DOCUMENT);
   private readonly dir = inject(AppDirectionality);
-
   private readonly notify$ = new BehaviorSubject<Partial<AppSettings>>({});
-
-  get notify() {
-    return this.notify$.asObservable();
-  }
-
   private htmlElement!: HTMLHtmlElement;
-
-  options: AppSettings;
-
-  themeColor: Exclude<AppTheme, 'auto'> = 'light';
 
   constructor() {
     const storedOptions = this.store.get(this.key);
     this.options = Object.assign(defaults, storedOptions);
     this.themeColor = this.getThemeColor();
     this.htmlElement = this.document.querySelector('html')!;
+  }
+
+  get notify() {
+    return this.notify$.asObservable();
   }
 
   reset() {

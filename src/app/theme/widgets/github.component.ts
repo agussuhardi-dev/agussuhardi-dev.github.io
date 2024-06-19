@@ -26,4 +26,5 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [MatButtonModule],
 })
-export class GithubButtonComponent {}
+export class GithubButtonComponent {
+}

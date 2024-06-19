@@ -1,5 +1,5 @@
-import { Injectable, OnDestroy, inject } from '@angular/core';
-import { BehaviorSubject, Subject, Subscription, share, timer } from 'rxjs';
+import { inject, Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, share, Subject, Subscription, timer } from 'rxjs';
 
 import { LocalStorageService } from '@shared';
 import { currentTimestamp, filterObject } from './helpers';
