@@ -10,7 +10,9 @@ import { PageHeaderComponent } from '@shared';
   imports: [PageHeaderComponent],
 })
 export class DashboardComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

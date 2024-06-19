@@ -13,7 +13,8 @@ import { ConvertsTimestampComponent } from '../timestamp/timestamp.component';
 })
 export class ConvertsMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

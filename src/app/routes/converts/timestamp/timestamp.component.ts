@@ -6,11 +6,12 @@ import { PageHeaderComponent } from '@shared';
   templateUrl: './timestamp.component.html',
   styleUrl: './timestamp.component.scss',
   standalone: true,
-  imports: [PageHeaderComponent]
+  imports: [PageHeaderComponent],
 })
 export class ConvertsTimestampComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

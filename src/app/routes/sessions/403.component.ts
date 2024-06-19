@@ -13,4 +13,5 @@ import { ErrorCodeComponent } from '@shared/components/error-code/error-code.com
   standalone: true,
   imports: [ErrorCodeComponent],
 })
-export class Error403Component {}
+export class Error403Component {
+}

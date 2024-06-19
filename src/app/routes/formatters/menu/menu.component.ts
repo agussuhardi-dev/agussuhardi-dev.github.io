@@ -14,7 +14,8 @@ import { FormattersJsonComponent } from '../json/json.component';
 })
 export class FormattersMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

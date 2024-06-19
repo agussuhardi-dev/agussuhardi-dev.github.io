@@ -16,7 +16,8 @@ import { GeneratorsUuidComponent } from '../uuid/uuid.component';
 })
 export class GeneratorsMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
