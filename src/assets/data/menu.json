@@ -1,14 +1,22 @@
 {
   "menu": [
     {
-      "route": "dashboard",
-      "name": "dashboard",
+      "route": "converts",
+      "name": "converts",
       "type": "link",
-      "icon": "dashboard",
-      "badge": {
-        "color": "red-500",
-        "value": "5"
-      }
+      "icon": "cameraswitch"
+    },
+    {
+      "route": "formatters",
+      "name": "formatters",
+      "type": "link",
+      "icon": "dashboard"
+    },
+    {
+      "route": "generators",
+      "name": "generators",
+      "type": "link",
+      "icon": "app_registration"
     },
     {
       "route": "/",

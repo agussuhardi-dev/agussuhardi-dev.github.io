@@ -1,5 +1,8 @@
 {
   "menu": {
+    "converts": "Converts",
+    "formatters": "Formatters",
+    "generators": "Generators",
     "dashboard": "Dashboard",
     "design": "Design",
     "design.colors": "Color System",
