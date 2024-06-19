@@ -20,8 +20,7 @@ export const routes: Routes = [
     // canActivate: [authGuard],
     // canActivateChild: [authGuard],
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent },
+      { path: '', redirectTo: 'converts', pathMatch: 'full' },
       { path: 'converts', component: ConvertsMenuComponent },
       { path: 'formatters', component: FormattersMenuComponent },
       { path: 'generators', component: GeneratorsMenuComponent },

@@ -1,15 +1,9 @@
-<div style="display: flex; flex-direction: row-reverse; padding-right: 12px">
-  <mat-radio-group
-    (ngModelChange)="onChange($event)"
-    [(ngModel)]="favoriteSeason"
-    aria-labelledby="example-radio-group-label"
-    class="example-radio-group"
+<div style="display: flex; flex-direction: row-reverse; padding: 12px">
 
-  >
-    @for (season of seasons; track season) {
-      <mat-radio-button class="example-radio-button" [value]="season">{{ season }}</mat-radio-button>
-    }
-  </mat-radio-group>
+  <button (click)="onChange()" extended mat-fab>
+    <mat-icon>edit_note</mat-icon>
+    Generate
+  </button>
 </div>
 
 

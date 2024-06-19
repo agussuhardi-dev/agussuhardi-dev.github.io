@@ -5,6 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { stringify } from 'yaml';
+import * as JsonToXML from 'js2xmlparser';
+import { QRCodeModule } from 'angularx-qrcode';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-generators-qr',
@@ -17,28 +21,25 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatIconModule,
     MatRadioGroup,
-    MatRadioButton],
+    MatRadioButton,
+    QRCodeModule, NgIf,
+  ],
 })
 export class GeneratorsQrComponent {
 
   favoriteSeason: string = '';
-  seasons: string[] = ['Prettify', 'Uglify'];
+  seasons: string[] = ['XML', 'YML'];
   public original = '';
+  public result = '';
 
   constructor() {
   }
 
 
   onChange(value: string) {
-    const original = JSON.parse(this.original);
 
-
-    if (value === 'Prettify') {
-      this.original = JSON.stringify(original, null, 2);
-    } else if (value === 'Uglify') {
-      this.original = JSON.stringify(JSON.parse(this.original));
-    }
   }
 
 
 }
+

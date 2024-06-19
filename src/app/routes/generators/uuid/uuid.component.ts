@@ -5,6 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { v4 as uuidv4 } from 'uuid';
+
 
 @Component({
   selector: 'app-generators-uuid',
@@ -29,14 +31,9 @@ export class GeneratorsUuidComponent {
   }
 
 
-  onChange(value: string) {
-    const original = JSON.parse(this.original);
-
-
-    if (value === 'Prettify') {
-      this.original = JSON.stringify(original, null, 2);
-    } else if (value === 'Uglify') {
-      this.original = JSON.stringify(JSON.parse(this.original));
+  onChange() {
+    for (let i = 0; i < 50; i++) {
+      this.original = uuidv4() + '\n' + this.original;
     }
   }
 
