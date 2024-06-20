@@ -1,0 +1,1 @@
+import{a as o,b as t,c as n}from"./chunk-RP2DHAFT.js";import"./chunk-UCPYZNX7.js";import"./chunk-BCH6KIZ4.js";import"./chunk-VPWRLYI7.js";import"./chunk-YAH3INPE.js";var p=[{path:"menu",component:n},{path:"json",component:t},{path:"sql",component:o}];export{p as routes};
