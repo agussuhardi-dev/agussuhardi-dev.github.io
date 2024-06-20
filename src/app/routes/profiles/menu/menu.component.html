@@ -1,0 +1,20 @@
+<nav class="navbar" id="navbar">
+  <ul>
+    <li>
+      <a [ngClass]="href==='/profiles'?'active':''" [routerLink]="'/profiles'" class="nav-link">Home</a>
+    </li>
+    <li>
+      <a [ngClass]="href==='/profiles/about'?'active':''" [routerLink]="'/profiles/about'" class="nav-link">About</a>
+    </li>
+    <li>
+      <a [ngClass]="href==='/profiles/skill'?'active':''" [routerLink]="'/profiles/skill'" class="nav-link">Skill</a>
+    </li>
+    <li>
+      <a [ngClass]="href==='/profiles/resume'?'active':''" [routerLink]="'/profiles/resume'" class="nav-link">Resume</a>
+    </li>
+    <li>
+      <a class="nav-link" href="https://agussuhardi-dev.github.io/" target="_blank">Dev Tools</a>
+    </li>
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle"></i>
+</nav><!-- .navbar -->

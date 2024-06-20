@@ -9,6 +9,10 @@ import { RegisterComponent } from './routes/sessions/register/register.component
 import { ConvertsMenuComponent } from './routes/converts/menu/menu.component';
 import { FormattersMenuComponent } from './routes/formatters/menu/menu.component';
 import { GeneratorsMenuComponent } from './routes/generators/menu/menu.component';
+import { ProfilesProfileComponent } from './routes/profiles/profile/profile.component';
+import { ProfilesHomeComponent } from './routes/profiles/home/home.component';
+import { ProfilesAboutComponent } from './routes/profiles/about/about.component';
+import { ProfilesSkillComponent } from './routes/profiles/skill/skill.component';
 
 export const routes: Routes = [
   {
@@ -31,13 +35,7 @@ export const routes: Routes = [
       { path: 'encrypt', loadChildren: () => import('./routes/encrypt/encrypt.routes').then(m => m.routes) },
     ],
   },
-  {
-    path: 'auth',
-    component: AuthLayoutComponent,
-    children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-    ],
-  },
-  { path: '**', redirectTo: 'dashboard' },
+
+  { path: 'profiles', component: ProfilesProfileComponent, loadChildren: () => import('./routes/profiles/profiles.routes').then(m => m.routes) },
+  // { path: '**', redirectTo: 'converts' },
 ];
