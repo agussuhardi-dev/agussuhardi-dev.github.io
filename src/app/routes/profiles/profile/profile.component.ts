@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageHeaderComponent } from '@shared';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profiles-profile',
@@ -9,12 +10,14 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [PageHeaderComponent, RouterOutlet],
 })
-export class ProfilesProfileComponent implements OnInit {
+export class ProfilesProfileComponent {
 
-  constructor() {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private titleService: Title) {
+    titleService.setTitle('Profile : Agus Suhardi');
+
   }
 
-  ngOnInit() {
-  }
 
 }
