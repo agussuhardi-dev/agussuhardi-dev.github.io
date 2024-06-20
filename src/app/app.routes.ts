@@ -1,18 +1,12 @@
 import { Routes } from '@angular/router';
 import { AdminLayoutComponent } from '@theme/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from '@theme/auth-layout/auth-layout.component';
 import { Error403Component } from './routes/sessions/403.component';
 import { Error404Component } from './routes/sessions/404.component';
 import { Error500Component } from './routes/sessions/500.component';
-import { LoginComponent } from './routes/sessions/login/login.component';
-import { RegisterComponent } from './routes/sessions/register/register.component';
 import { ConvertsMenuComponent } from './routes/converts/menu/menu.component';
 import { FormattersMenuComponent } from './routes/formatters/menu/menu.component';
 import { GeneratorsMenuComponent } from './routes/generators/menu/menu.component';
 import { ProfilesProfileComponent } from './routes/profiles/profile/profile.component';
-import { ProfilesHomeComponent } from './routes/profiles/home/home.component';
-import { ProfilesAboutComponent } from './routes/profiles/about/about.component';
-import { ProfilesSkillComponent } from './routes/profiles/skill/skill.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +30,10 @@ export const routes: Routes = [
     ],
   },
 
-  { path: 'profiles', component: ProfilesProfileComponent, loadChildren: () => import('./routes/profiles/profiles.routes').then(m => m.routes) },
+  {
+    path: 'profiles',
+    component: ProfilesProfileComponent,
+    loadChildren: () => import('./routes/profiles/profiles.routes').then(m => m.routes),
+  },
   // { path: '**', redirectTo: 'converts' },
 ];

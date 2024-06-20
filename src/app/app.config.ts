@@ -23,6 +23,7 @@ import { FormlyConfigModule } from './formly-config.module';
 
 import { LoginService } from '@core/authentication/login.service';
 import { FakeLoginService } from './fake-login.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 // Required for AOT compilation
 export function TranslateHttpLoaderFactory(http: HttpClient) {
@@ -31,6 +32,7 @@ export function TranslateHttpLoaderFactory(http: HttpClient) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     provideAnimationsAsync(),
     provideHttpClient(withInterceptorsFromDi()),
     provideRouter(
