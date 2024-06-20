@@ -1,1 +1,0 @@
-import{a as o,b as n,c as t,d as m,e as r}from"./chunk-J6JG22LX.js";import"./chunk-TWNB76KI.js";import"./chunk-FL75LJLA.js";import"./chunk-YAH3INPE.js";var u=[{path:"uuid",component:m},{path:"lorem-ipsum",component:o},{path:"random",component:t},{path:"qr",component:n},{path:"menu",component:r}];export{u as routes};
