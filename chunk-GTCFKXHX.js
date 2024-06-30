@@ -1,1 +1,0 @@
-import{h as o,i as t}from"./chunk-UCPYZNX7.js";import"./chunk-BCH6KIZ4.js";import"./chunk-VPWRLYI7.js";import"./chunk-YAH3INPE.js";var p=[{path:"json",component:o},{path:"timestamp",component:t}];export{p as routes};

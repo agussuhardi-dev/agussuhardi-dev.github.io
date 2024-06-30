@@ -1,19 +1,19 @@
 {
   "menu": [
     {
-      "route": "converts",
+      "route": "/dev-tools/converts",
       "name": "converts",
       "type": "link",
       "icon": "cameraswitch"
     },
     {
-      "route": "formatters",
+      "route": "/dev-tools/formatters",
       "name": "formatters",
       "type": "link",
       "icon": "dashboard"
     },
     {
-      "route": "generators",
+      "route": "/dev-tools/generators",
       "name": "generators",
       "type": "link",
       "icon": "app_registration"
