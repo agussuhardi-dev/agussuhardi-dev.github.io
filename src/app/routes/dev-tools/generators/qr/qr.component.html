@@ -1,0 +1,25 @@
+<div style="display: flex; flex-direction: row-reverse; padding-right: 12px">
+  <mat-radio-group
+    (ngModelChange)="onChange($event)"
+    [(ngModel)]="favoriteSeason"
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+
+  >
+    @for (season of seasons; track season) {
+      <mat-radio-button class="example-radio-button" [value]="season">{{ season }}</mat-radio-button>
+    }
+  </mat-radio-group>
+</div>
+
+
+<div class="parent">
+  <div class="item">
+    <textarea [(ngModel)]="original" style="width:100%;height:100%"
+              type="text"></textarea>
+  </div>
+  <div *ngIf="original" class="item last">
+    <qr-code [value]="original" size="300" errorCorrectionLevel="M"></qr-code>
+  </div>
+
+</div>

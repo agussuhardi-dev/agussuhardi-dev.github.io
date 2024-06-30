@@ -1,5 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -36,7 +42,7 @@ export class RegisterComponent {
     },
     {
       validators: [this.matchValidator('password', 'confirmPassword')],
-    },
+    }
   );
 
   matchValidator(source: string, target: string) {

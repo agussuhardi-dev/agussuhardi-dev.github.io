@@ -1,12 +1,22 @@
 /** Override Material styles */
 
+@use '@angular/material' as mat;
+
 .mat-mdc-card {
+  margin-bottom: var(--gutter);
+}
+
+.mat-mdc-card-header {
   margin-bottom: var(--gutter);
 }
 
 .mat-mdc-accordion {
   display: block;
   margin-bottom: var(--gutter);
+}
+
+.mat-mdc-menu-panel {
+  @include mat.elevation(2);
 }
 
 .form-field-full {

@@ -1,4 +1,4 @@
-<mat-toolbar class="matero-toolbar">
+<mat-toolbar>
   @if (showToggle) {
     <button mat-icon-button (click)="toggleSidenav.emit()">
       <mat-icon>menu</mat-icon>
@@ -6,17 +6,17 @@
   }
 
   @if (showBranding) {
-    <app-branding></app-branding>
+    <app-branding />
   }
 
   <span class="flex-fill"></span>
 
-  <app-github-button></app-github-button>
+  <app-github-button />
 
+  <app-translate />
 
-  <button (click)="toggleFullscreen()" class="hide-small" mat-icon-button>
+  <button mat-icon-button class="hide-small" (click)="toggleFullscreen()">
     <mat-icon>fullscreen</mat-icon>
   </button>
 
-  <app-translate></app-translate>
 </mat-toolbar>

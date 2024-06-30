@@ -20,7 +20,7 @@ describe('Token', () => {
       expect(JwtToken.is(token.access_token)).toBeTrue();
     });
 
-    it('test bearer token', function() {
+    it('test bearer token', function () {
       expect(token.getBearerToken()).toBe(`Bearer ${token.access_token}`);
     });
 

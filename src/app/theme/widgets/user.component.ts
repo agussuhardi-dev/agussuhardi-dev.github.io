@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -11,9 +11,8 @@ import { AuthService, SettingsService, User } from '@core';
 @Component({
   selector: 'app-user',
   template: `
-    <button class="r-full" mat-button [matMenuTriggerFor]="menu">
-      <img matButtonIcon class="avatar r-full" [src]="user.avatar" width="24" alt="avatar" />
-      <span class="m-x-8">{{ user.name }}</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <img class="avatar" [src]="user.avatar" width="24" alt="avatar" />
     </button>
 
     <mat-menu #menu="matMenu">
@@ -39,24 +38,26 @@ import { AuthService, SettingsService, User } from '@core';
     .avatar {
       width: 1.5rem;
       height: 1.5rem;
+      border-radius: 50rem;
     }
   `,
   standalone: true,
   imports: [RouterLink, MatButtonModule, MatIconModule, MatMenuModule, TranslateModule],
 })
 export class UserComponent implements OnInit {
-  user!: User;
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
   private readonly settings = inject(SettingsService);
+
+  user!: User;
 
   ngOnInit(): void {
     this.auth
       .user()
       .pipe(
         tap(user => (this.user = user)),
-        debounceTime(10),
+        debounceTime(10)
       )
       .subscribe(() => this.cdr.detectChanges());
   }

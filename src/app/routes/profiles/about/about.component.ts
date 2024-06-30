@@ -11,8 +11,7 @@ import { ProfilesMenuComponent } from '../menu/menu.component';
 })
 export class ProfilesAboutComponent implements OnInit {
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
   }

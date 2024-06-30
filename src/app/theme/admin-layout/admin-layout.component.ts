@@ -1,10 +1,17 @@
 import { BidiModule } from '@angular/cdk/bidi';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, HostBinding, inject, OnDestroy, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  OnDestroy,
+  ViewChild,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
 import { MatSidenav, MatSidenavContent, MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NgProgressComponent } from 'ngx-progressbar';
-import { filter, Subscription } from 'rxjs';
+import { Subscription, filter } from 'rxjs';
 
 import { AppSettings, SettingsService } from '@core';
 import { CustomizerComponent } from '../customizer/customizer.component';
@@ -44,9 +51,39 @@ export class AdminLayoutComponent implements OnDestroy {
   private readonly settings = inject(SettingsService);
 
   options = this.settings.options;
+
+  get themeColor() {
+    return this.settings.themeColor;
+  }
+
+  get isOver() {
+    return this.isMobileScreen;
+  }
+
   private isMobileScreen = false;
+
+  @HostBinding('class.matero-content-width-fix')
+  get contentWidthFix() {
+    return (
+      this.isContentWidthFixed &&
+      this.options.navPos === 'side' &&
+      this.options.sidenavOpened &&
+      !this.isOver
+    );
+  }
+
   private isContentWidthFixed = true;
+
+  @HostBinding('class.matero-sidenav-collapsed-fix')
+  get collapsedWidthFix() {
+    return (
+      this.isCollapsedWidthFixed &&
+      (this.options.navPos === 'top' || (this.options.sidenavOpened && this.isOver))
+    );
+  }
+
   private isCollapsedWidthFixed = false;
+
   private layoutChangesSubscription = Subscription.EMPTY;
 
   constructor() {
@@ -67,30 +104,6 @@ export class AdminLayoutComponent implements OnDestroy {
       }
       this.content.scrollTo({ top: 0 });
     });
-  }
-
-  get themeColor() {
-    return this.settings.themeColor;
-  }
-
-  get isOver() {
-    return this.isMobileScreen;
-  }
-
-  @HostBinding('class.matero-content-width-fix') get contentWidthFix() {
-    return (
-      this.isContentWidthFixed &&
-      this.options.navPos === 'side' &&
-      this.options.sidenavOpened &&
-      !this.isOver
-    );
-  }
-
-  @HostBinding('class.matero-sidenav-collapsed-fix') get collapsedWidthFix() {
-    return (
-      this.isCollapsedWidthFixed &&
-      (this.options.navPos === 'top' || (this.options.sidenavOpened && this.isOver))
-    );
   }
 
   ngOnDestroy() {

@@ -32,15 +32,17 @@ import { AuthService } from '@core/authentication';
   ],
 })
 export class LoginComponent {
-  isSubmitting = false;
   private readonly fb = inject(FormBuilder);
+  private readonly router = inject(Router);
+  private readonly auth = inject(AuthService);
+
+  isSubmitting = false;
+
   loginForm = this.fb.nonNullable.group({
     username: ['ng-matero', [Validators.required]],
     password: ['ng-matero', [Validators.required]],
     rememberMe: [false],
   });
-  private readonly router = inject(Router);
-  private readonly auth = inject(AuthService);
 
   get username() {
     return this.loginForm.get('username')!;

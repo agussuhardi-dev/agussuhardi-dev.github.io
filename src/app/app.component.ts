@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, inject } from '@angular/core';
 import { PreloaderService, SettingsService } from '@core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  template: `<router-outlet />`,
   standalone: true,
   imports: [RouterOutlet],
 })

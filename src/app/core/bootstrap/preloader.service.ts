@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +8,10 @@ export class PreloaderService {
   private readonly document = inject(DOCUMENT);
 
   private readonly selector = 'globalLoader';
+
+  private getElement() {
+    return this.document.getElementById(this.selector);
+  }
 
   hide() {
     const el = this.getElement();
@@ -20,9 +24,5 @@ export class PreloaderService {
         el.className += ' global-loader-fade-out';
       }
     }
-  }
-
-  private getElement() {
-    return this.document.getElementById(this.selector);
   }
 }

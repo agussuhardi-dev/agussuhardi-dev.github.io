@@ -1,0 +1,22 @@
+{
+  "menu": [
+    {
+      "route": "/dev-tools/converts",
+      "name": "converts",
+      "type": "link",
+      "icon": "cameraswitch"
+    },
+    {
+      "route": "/dev-tools/formatters",
+      "name": "formatters",
+      "type": "link",
+      "icon": "dashboard"
+    },
+    {
+      "route": "/dev-tools/generators",
+      "name": "generators",
+      "type": "link",
+      "icon": "app_registration"
+    }
+  ]
+}

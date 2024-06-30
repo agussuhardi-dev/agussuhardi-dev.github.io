@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { MenuService } from '@core/bootstrap/menu.service';
@@ -13,12 +13,10 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [MatIconModule, TranslateModule],
 })
 export class BreadcrumbComponent implements OnInit {
-  @Input() nav: string[] = [];
   private readonly router = inject(Router);
   private readonly menu = inject(MenuService);
 
-  constructor() {
-  }
+  @Input() nav: string[] = [];
 
   ngOnInit() {
     this.nav = Array.isArray(this.nav) ? this.nav : [];

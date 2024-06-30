@@ -11,8 +11,7 @@ import { ProfilesMenuComponent } from '../menu/menu.component';
 })
 export class ProfilesSkillComponent implements OnInit {
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit() {
   }

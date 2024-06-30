@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { currentTimestamp, TokenFactory, TokenService } from '@core/authentication';
+import { TokenFactory, TokenService, currentTimestamp } from '@core/authentication';
 import { LocalStorageService, MemoryStorageService } from '@shared/services/storage.service';
 import { tap } from 'rxjs';
 

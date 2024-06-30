@@ -1,9 +1,8 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AuthService, User } from '@core/authentication';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 import { switchMap, tap } from 'rxjs';
 import { Menu, MenuService } from './menu.service';
-import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -19,17 +18,13 @@ export class StartupService {
    * such as permissions and roles.
    */
   load() {
-    this.authService
-      .login('ng-matero', 'ng-matero', true)
-      .pipe(filter(authenticated => authenticated))
-      .subscribe();
     return new Promise<void>((resolve, reject) => {
       this.authService
         .change()
         .pipe(
           tap(user => this.setPermissions(user)),
           switchMap(() => this.authService.menu()),
-          tap(menu => this.setMenu(menu)),
+          tap(menu => this.setMenu(menu))
         )
         .subscribe({
           next: () => resolve(),

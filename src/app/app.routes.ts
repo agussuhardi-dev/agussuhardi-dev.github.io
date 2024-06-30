@@ -1,39 +1,20 @@
 import { Routes } from '@angular/router';
-import { AdminLayoutComponent } from '@theme/admin-layout/admin-layout.component';
-import { Error403Component } from './routes/sessions/403.component';
-import { Error404Component } from './routes/sessions/404.component';
-import { Error500Component } from './routes/sessions/500.component';
-import { ConvertsMenuComponent } from './routes/converts/menu/menu.component';
-import { FormattersMenuComponent } from './routes/formatters/menu/menu.component';
-import { GeneratorsMenuComponent } from './routes/generators/menu/menu.component';
-import { ProfilesProfileComponent } from './routes/profiles/profile/profile.component';
+import { MainMainComponent } from './routes/main/main/main.component';
+import { DevToolsDevToolsComponent } from './routes/dev-tools/dev-tools.component';
+import { ProfilesProfilesComponent } from './routes/profiles/profiles/profiles.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AdminLayoutComponent,
-    // canActivate: [authGuard],
-    // canActivateChild: [authGuard],
-    children: [
-      { path: '', redirectTo: 'converts', pathMatch: 'full' },
-      { path: 'converts', component: ConvertsMenuComponent },
-      { path: 'formatters', component: FormattersMenuComponent },
-      { path: 'generators', component: GeneratorsMenuComponent },
-      { path: '403', component: Error403Component },
-      { path: '404', component: Error404Component },
-      { path: '500', component: Error500Component },
-      { path: 'converts', loadChildren: () => import('./routes/converts/converts.routes').then(m => m.routes) },
-      { path: 'formatters', loadChildren: () => import('./routes/formatters/formatters.routes').then(m => m.routes) },
-      { path: 'generators', loadChildren: () => import('./routes/generators/generators.routes').then(m => m.routes) },
-      { path: 'hashing', loadChildren: () => import('./routes/hashing/hashing.routes').then(m => m.routes) },
-      { path: 'encrypt', loadChildren: () => import('./routes/encrypt/encrypt.routes').then(m => m.routes) },
-    ],
+    component: MainMainComponent,
   },
-
   {
-    path: 'profiles',
-    component: ProfilesProfileComponent,
-    loadChildren: () => import('./routes/profiles/profiles.routes').then(m => m.routes),
+    path: 'dev-tools',
+    component: DevToolsDevToolsComponent,
+    loadChildren: () => import('./routes/dev-tools/dev-tools.routes').then(m => m.routes),
   },
-  // { path: '**', redirectTo: 'converts' },
+  { path: 'profiles',
+    component: ProfilesProfilesComponent,
+    loadChildren: () => import('./routes/profiles/profiles.routes').then(m => m.routes) },
+  { path: '**', redirectTo: '' },
 ];

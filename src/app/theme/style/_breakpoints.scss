@@ -6,9 +6,9 @@
 // adapting to different screen sizes, for use in media queries.
 $breakpoints: (
   xsmall: 0,
-  small: 600px,
+  small:  600px,
   medium: 960px,
-  large: 1280px,
+  large:  1280px,
   xlarge: 1920px
 );
 
@@ -26,7 +26,8 @@ $breakpoints: (
     @media (min-width: $min) {
       @content;
     }
-  } @else {
+  }
+  @else {
     @content;
   }
 }
@@ -39,7 +40,8 @@ $breakpoints: (
     @media (max-width: $max) {
       @content;
     }
-  } @else {
+  }
+  @else {
     @content;
   }
 }

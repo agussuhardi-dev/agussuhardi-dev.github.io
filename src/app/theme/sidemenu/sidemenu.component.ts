@@ -1,6 +1,12 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { Component, inject, Input, ViewEncapsulation } from '@angular/core';
+import { AsyncPipe, NgTemplateOutlet, SlicePipe } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -17,9 +23,11 @@ import { NavAccordionDirective } from './nav-accordion.directive';
   templateUrl: './sidemenu.component.html',
   styleUrl: './sidemenu.component.scss',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     AsyncPipe,
+    SlicePipe,
     NgTemplateOutlet,
     RouterLink,
     RouterLinkActive,
@@ -37,7 +45,7 @@ import { NavAccordionDirective } from './nav-accordion.directive';
       state('expanded', style({ height: '*', visibility: '' })),
       transition(
         'expanded <=> collapsed, void => collapsed',
-        animate('225ms cubic-bezier(0.4,0,0.2,1)'),
+        animate('225ms cubic-bezier(0.4,0,0.2,1)')
       ),
     ]),
   ],

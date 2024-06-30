@@ -1,10 +1,22 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { filter, Subscription } from 'rxjs';
+import { Subscription, filter } from 'rxjs';
 
 import { MenuChildrenItem, MenuService } from '@core';
 import { TopmenuState } from './topmenu.component';
@@ -12,6 +24,8 @@ import { TopmenuState } from './topmenu.component';
 @Component({
   selector: 'app-topmenu-panel',
   templateUrl: './topmenu-panel.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     RouterLink,
@@ -23,24 +37,22 @@ import { TopmenuState } from './topmenu.component';
   ],
 })
 export class TopmenuPanelComponent implements OnInit, OnDestroy {
+  private readonly menu = inject(MenuService);
+  private readonly router = inject(Router);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   @ViewChild(MatMenu, { static: true }) menuPanel!: MatMenu;
 
   @Input() items: MenuChildrenItem[] = [];
   @Input() parentRoute: string[] = [];
   @Input() level = 1;
-  @Output() routeChange = new EventEmitter<any>();
+  @Output() routeChange = new EventEmitter<RouterLinkActive>();
 
   menuStates: TopmenuState[] = [];
 
   buildRoute = this.menu.buildRoute;
 
   private routerSubscription = Subscription.EMPTY;
-
-  constructor(
-    private menu: MenuService,
-    private router: Router,
-  ) {
-  }
 
   ngOnInit() {
     this.items.forEach(item => {
@@ -84,7 +96,10 @@ export class TopmenuPanelComponent implements OnInit, OnDestroy {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(e => {
         this.menuStates.forEach(item => (item.active = false));
-        setTimeout(() => (this.menuStates[index].active = rla.isActive));
+        setTimeout(() => {
+          this.menuStates[index].active = rla.isActive;
+          this.cdr.markForCheck();
+        });
       });
   }
 }

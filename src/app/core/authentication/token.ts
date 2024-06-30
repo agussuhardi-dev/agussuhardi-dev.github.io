@@ -2,8 +2,7 @@ import { base64, capitalize, currentTimestamp, timeLeft } from './helpers';
 import { Token } from './interface';
 
 export abstract class BaseToken {
-  constructor(protected attributes: Token) {
-  }
+  constructor(protected attributes: Token) {}
 
   get access_token(): string {
     return this.attributes.access_token;
@@ -48,15 +47,25 @@ export abstract class BaseToken {
   }
 }
 
-export class SimpleToken extends BaseToken {
-}
+export class SimpleToken extends BaseToken {}
 
 export class JwtToken extends SimpleToken {
+  private _payload?: { exp?: number | void };
+
+  static is(accessToken: string): boolean {
+    try {
+      const [_header] = accessToken.split('.');
+      const header = JSON.parse(base64.decode(_header));
+
+      return header.typ.toUpperCase().includes('JWT');
+    } catch (e) {
+      return false;
+    }
+  }
+
   get exp(): number | void {
     return this.payload?.exp;
   }
-
-  private _payload?: { exp?: number | void };
 
   private get payload(): { exp?: number | void } {
     if (!this.access_token) {
@@ -74,16 +83,5 @@ export class JwtToken extends SimpleToken {
     }
 
     return (this._payload = data);
-  }
-
-  static is(accessToken: string): boolean {
-    try {
-      const [_header] = accessToken.split('.');
-      const header = JSON.parse(base64.decode(_header));
-
-      return header.typ.toUpperCase().includes('JWT');
-    } catch (e) {
-      return false;
-    }
   }
 }

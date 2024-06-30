@@ -80,6 +80,31 @@ export class MenuService {
     return this.getLevel(routeArr)[routeArr.length - 1];
   }
 
+  // Whether is a leaf menu
+  private isLeafItem(item: MenuChildrenItem) {
+    const cond0 = item.route === undefined;
+    const cond1 = item.children === undefined;
+    const cond2 = !cond1 && item.children?.length === 0;
+    return cond0 || cond1 || cond2;
+  }
+
+  // Deep clone object could be jsonized
+  private deepClone(obj: any) {
+    return JSON.parse(JSON.stringify(obj));
+  }
+
+  // Whether two objects could be jsonized equal
+  private isJsonObjEqual(obj0: any, obj1: any) {
+    return JSON.stringify(obj0) === JSON.stringify(obj1);
+  }
+
+  // Whether routeArr equals realRouteArr (after remove empty route element)
+  private isRouteEqual(routeArr: Array<string>, realRouteArr: Array<string>) {
+    realRouteArr = this.deepClone(realRouteArr);
+    realRouteArr = realRouteArr.filter(r => r !== '');
+    return this.isJsonObjEqual(routeArr, realRouteArr);
+  }
+
   /** Get the menu level. */
   getLevel(routeArr: string[]): string[] {
     let tmpArr: any[] = [];
@@ -120,30 +145,5 @@ export class MenuService {
         this.addNamespace(menuItem.children, menuItem.name);
       }
     });
-  }
-
-  // Whether is a leaf menu
-  private isLeafItem(item: MenuChildrenItem) {
-    const cond0 = item.route === undefined;
-    const cond1 = item.children === undefined;
-    const cond2 = !cond1 && item.children?.length === 0;
-    return cond0 || cond1 || cond2;
-  }
-
-  // Deep clone object could be jsonized
-  private deepClone(obj: any) {
-    return JSON.parse(JSON.stringify(obj));
-  }
-
-  // Whether two objects could be jsonized equal
-  private isJsonObjEqual(obj0: any, obj1: any) {
-    return JSON.stringify(obj0) === JSON.stringify(obj1);
-  }
-
-  // Whether routeArr equals realRouteArr (after remove empty route element)
-  private isRouteEqual(routeArr: Array<string>, realRouteArr: Array<string>) {
-    realRouteArr = this.deepClone(realRouteArr);
-    realRouteArr = realRouteArr.filter(r => r !== '');
-    return this.isJsonObjEqual(routeArr, realRouteArr);
   }
 }
