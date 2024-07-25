@@ -1,0 +1,23 @@
+<app-profiles-menu style="
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 0 24px;
+"></app-profiles-menu>
+
+<div class="about-me container" style="margin-top: 100px">
+
+  <div class="section-title">
+    <h2>Resume</h2>
+    <p>experience</p>
+  </div>
+
+  <a [href]="resume" download="proposed_file_name">Download</a>
+
+  <pdf-viewer [src]="resume"
+              [render-text]="true"
+              [original-size]="false"
+              style="width: 400px; height: 500px"
+  ></pdf-viewer>
+
+
+</div>

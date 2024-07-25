@@ -36,6 +36,7 @@
     "moment": "^2.30.0",
     "ng-matero": "^18.0.1",
     "ng-qrcode": "^18.0.0",
+    "ng2-pdf-viewer": "^10.2.2",
     "ngx-permissions": "^17.1.0",
     "ngx-progressbar": "^11.1.0",
     "ngx-toastr": "^19.0.0",
